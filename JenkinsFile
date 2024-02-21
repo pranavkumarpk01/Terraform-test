@@ -17,6 +17,7 @@ pipeline {
             steps {
                 script {
                     dir("terraform") {
+                        cd terraform
                         git "https://github.com/pranavkumarpk01/Terraform-.git"
                     }
                 }
