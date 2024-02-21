@@ -16,18 +16,17 @@ pipeline {
         stage('checkout') {
             steps {
                 script {
-                    dir("terraform") {
                         git "https://github.com/pranavkumarpk01/Terraform-.git"
-                    }
+                    
                 }
             }
         }
 
         stage('Plan') {
             steps {
-                sh 'cd terraform/ ; terraform init'
-                sh 'cd terraform/ ; terraform plan -out tfplan'
-                sh 'cd terraform/ ; terraform show -no-color tfplan > tfplan.txt'
+                sh 'terraform init'
+                sh 'terraform plan -out tfplan'
+                sh ' terraform show -no-color tfplan > tfplan.txt'
             }
         }
 
@@ -49,7 +48,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh 'cd terraform/ ; terraform apply -input=false tfplan'
+                sh ' terraform apply -input=false tfplan'
             }
         }
     }
