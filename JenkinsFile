@@ -15,10 +15,9 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                script {
+                
                         git "https://github.com/pranavkumarpk01/Terraform-.git"
                     
-                }
             }
         }
 
